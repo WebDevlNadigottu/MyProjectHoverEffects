@@ -1,0 +1,185 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial;
+}
+
+.container{
+    perspective: 900px;
+    width: 100vw;
+    height: 100vh;
+    padding: 5px 5%;
+    overflow-x: hidden;
+}
+nav {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    width: 150px;
+    cursor: pointer;
+    
+}
+
+nav ul {
+    flex: 1; /* means it uses 100% */
+    text-align: center;
+    list-style: none;
+}
+
+nav ul li {
+    display: inline-block; /* here if we take only inline then we cannot take margin on top*/
+    margin: 10px 30px;
+}
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    position: relative;
+    padding: 0 8px;
+    /* border: 1px solid black; */
+}
+nav ul li a::before {
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    content: ''; /* here whatever we take that will be added before the a element*/
+    width: 100%;
+    height: 0px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    background-color: #5de727;
+    z-index: -1;
+    transition: height 0.5s ease;
+}
+nav ul li.active a::before{
+    height: 5px;
+}
+nav ul li a:hover::before {
+    height: 50px;
+}
+.row{
+    transform-style: preserve-3d;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+.col{
+    transform-style: preserve-3d;
+    flex-basis: 50%;  /* takes eaqula haly size */
+    position: relative;
+    /* border: 1px solid salmon; */
+    
+}
+.bg-img {
+    width: 75%;
+    margin-top: 50px;
+    animation: bgImg 7s ease infinite;
+}
+.fg-img {
+    position: absolute;
+    left: 40px;
+    bottom: 15px;
+    width: 30%;
+    animation: fgImg 7s ease infinite;
+}
+.col h2 {
+    margin-top: 100px;
+    line-height: 1.6;
+    font-size: 2.6vw;
+}
+.col h2 span {
+    font-weight: 500;
+    color: #33ff00;
+}
+.order-btn {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 10px;
+    background-color: #48ff00;
+    padding: 8px 20px;
+    border-radius: 30px;
+    box-shadow: 2px 3px 10px rgba(0,0,0, 0.5);
+}
+.order-btn:hover {
+    animation: btnAnim 1.5s ease infinite;
+}
+@keyframes btnAnim {
+    50% {
+        background-color: salmon;
+    }
+}
+@keyframes bgImg {
+    50% {
+        transform: scale(1.2) translateY(-30px);
+    }
+}
+@keyframes fgImg {
+    50% {
+        transform: translateZ(80px) scale(1.1) rotateX(40deg) translateX(-40px);
+    }
+}
+
+@media (min-width: 1340px) and (max-width: 2652px){
+   #text {
+        font-size: 30px;
+    }
+}
+@media  (max-width: 574px){
+    nav ul li {
+        margin: 5px;
+    }
+    
+    .fg-img {
+        position: absolute;
+        left: 10px;
+        bottom: 20px;
+        width: 40%;
+        animation: fgImg 7s ease infinite;
+    }
+    .col h2 {
+        margin-top: 50px;
+        line-height: 1.6;
+        font-size: 2.8vw;
+    }
+}
+@media  (max-width: 440px){
+    #text {
+        font-size: 12px;
+        margin: 0;
+        padding: 0;
+    }
+    .fg-img {
+        position: absolute;
+        left: 10px;
+        bottom: 20px;
+        width: 40%;
+        animation: fgImg 7s ease infinite;
+    }
+    .order-btn {
+        font-size: 12px;
+    }
+    @keyframes fgImg {
+        50% {
+            transform: translateZ(50px) scale(1.05) rotateX(40deg) translateX(-20px);
+        }
+    }
+}
+@media  (max-width: 293px){
+    #text {
+        font-size: 8px;
+        margin: 0;
+        padding: 0;
+    }
+    .order-btn {
+        font-size: 8px;
+        margin: 5px;
+        padding: 5px;
+    }
+}
